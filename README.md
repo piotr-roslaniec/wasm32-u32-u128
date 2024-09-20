@@ -3,10 +3,15 @@
 This repo showcases performance issues with 128-bit integer multiplication in WebAssembly.
 
 Related issues:
+
 - https://github.com/arkworks-rs/algebra/issues/578
 - https://github.com/arkworks-rs/algebra/issues/813
 - https://github.com/zkBob/ff/pull/1
 - https://github.com/WebAssembly/design/issues/1522
+
+## Installation
+
+Requires Rust and `wasm2wat` from https://github.com/WebAssembly/wabt.
 
 ## Usage
 
