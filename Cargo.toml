@@ -1,0 +1,12 @@
+[package]
+name = "wasm32-u32-u128"
+version = "0.1.0"
+authors = ["Piotr Roslaniec <p.roslaniec@gmail.com>"]
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+ark-bn254 = "0.4.0"
+wasm-bindgen = "0.2.93"
