@@ -8,12 +8,21 @@
 <h1 id="status">Running tests ...</h1>
 <script type="module">
     import init, {reproduce_multi3, reproduce_simd} from '../pkg/wasm32_u32_u128.js';
+    import {simd} from "https://unpkg.com/wasm-feature-detect?module";
+
 
     async function runWasm() {
         try {
             await init();
             reproduce_multi3();
             reproduce_simd();
+
+            if (await simd()) {
+                console.log('SIMD supported');
+            } else {
+                throw new Error('SIMD support detected');
+            }
+
             document.getElementById('status').innerText = 'OK';
             console.log('OK');
         } catch (error) {
@@ -22,7 +31,8 @@
         }
     }
 
-    runWasm();
+
+runWasm();
 </script>
 </body>
 </html>
