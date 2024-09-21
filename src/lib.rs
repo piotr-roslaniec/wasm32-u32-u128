@@ -3,7 +3,7 @@ use std::hint::black_box;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
-pub fn reproduce_multi3() -> () {
+pub fn reproduce_multi3() {
     let a = Fq::from(3u64);
     let b = Fq::from(5u64);
 

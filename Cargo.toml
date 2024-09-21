@@ -10,3 +10,6 @@ crate-type = ["cdylib", "rlib"]
 [dependencies]
 ark-bn254 = "0.4.0"
 wasm-bindgen = "0.2.93"
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.13"

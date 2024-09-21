@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WASM Demo</title>
+</head>
+<body>
+<h1 id="status">Running tests ...</h1>
+<script type="module">
+    import init, {reproduce_multi3, reproduce_simd} from '../pkg/wasm32_u32_u128.js';
+
+    async function runWasm() {
+        try {
+            await init();
+            reproduce_multi3();
+            reproduce_simd();
+            document.getElementById('status').innerText = 'OK';
+            console.log('OK');
+        } catch (error) {
+            document.getElementById('status').innerText = 'Error:\n' + error;
+            console.error('Error:', error);
+        }
+    }
+
+    runWasm();
+</script>
+</body>
+</html>
