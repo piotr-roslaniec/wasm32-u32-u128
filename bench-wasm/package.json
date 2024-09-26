@@ -1,7 +1,7 @@
 {
   "name": "bench-wasmcurves",
   "scripts": {
-    "bench": "node bench.js && node bench-tiny.js"
+    "bench": "node bench.js && node bench-io.js"
   },
   "dependencies": {
     "wasm": "../pkg"
