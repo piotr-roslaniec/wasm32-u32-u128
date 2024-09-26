@@ -44,7 +44,7 @@ pub fn bench_multi3(seed: u32, cases: u32) -> f64 {
         black_box(result);
         total_ms += elapsed.as_secs_f64();
     }
-    total_ms as f64
+    total_ms
 }
 
 #[cfg(target_feature = "simd128")]
@@ -71,4 +71,21 @@ pub fn bench_simd(seed: u32, cases: u32) -> f64 {
         total_ms += elapsed.as_secs_f64();
     }
     total_ms as f64
+}
+
+#[wasm_bindgen]
+pub fn bench_tiny_multi3(a: u64, b: u64) {
+    let a = Fq::from(a);
+    let b = Fq::from(b);
+    let result = a * b;
+    black_box(result);
+}
+
+#[cfg(target_feature = "simd128")]
+#[wasm_bindgen]
+pub fn bench_tiny_simd(a1: u64, a2: u64, b1: u64, b2: u64) -> () {
+    let a = u64x2(a1, a2);
+    let b = u64x2(b1, b2);
+    let result = u64x2_mul(a, b);
+    black_box(result);
 }

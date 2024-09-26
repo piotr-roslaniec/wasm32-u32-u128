@@ -1,9 +1,12 @@
 {
   "name": "bench-wasmcurves",
   "scripts": {
-    "bench": "node bench.js"
+    "bench": "node bench.js && node bench-tiny.js"
   },
   "dependencies": {
     "wasm": "../pkg"
+  },
+  "devDependencies": {
+    "tinybench": "^2.9.0"
   }
 }
