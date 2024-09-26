@@ -12,7 +12,6 @@ fn test_reproduce_multi3() {
     wasm32_u32_u128::reproduce_multi3();
 }
 
-
 #[cfg(target_feature = "simd128")]
 #[wasm_bindgen_test]
 fn test_reproduce_simd() {
