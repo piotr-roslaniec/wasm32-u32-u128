@@ -46,9 +46,9 @@ async function runBenchmark(fnName) {
 
   // Print test settings
   console.log(`\n\n====================`);
-  console.log(`Benchmark Settings:`);
-  console.log(`Number of Cases: ${TEST_CASES}`);
-  console.log(`Number of Trials: ${TRIALS}`);
+  console.log(`No IO benchmarks`);
+  console.log(`- Number of Cases: ${TEST_CASES}`);
+  console.log(`- Number of Trials: ${TRIALS}`);
   console.log();
 
   // Print results in Markdown table format

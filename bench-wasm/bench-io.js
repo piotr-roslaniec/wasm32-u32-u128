@@ -2,7 +2,7 @@ const {Bench} = require("tinybench");
 const {reproduce_simd, reproduce_multi3, bench_tiny_multi3, bench_tiny_simd} = require("../pkg");
 
 async function benchmark() {
-    console.log("Running IO benchmarks...\n");
+    console.log("\nRunning IO benchmarks...\n");
 
     const testInputs = [BigInt(1), BigInt(2), BigInt(3), BigInt(4)];
     const bench = new Bench();
