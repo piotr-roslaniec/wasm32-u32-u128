@@ -28,21 +28,22 @@ No IO benchmarks
 
 | Function     | Average Time (ms) | Median Time (ms) |
 |--------------|-------------------|------------------|
-| bench_multi3 | 358.58 (100.00%)  | 255.31 (100.00%) |
-| bench_simd   | 95.14 (26.53%)    | 92.98 (36.42%)   |
+| bench_multi3 | 266.31 (100.00%)  | 220.72 (100.00%) |
+| bench_simd   | 76.97 (28.90%)    | 75.93 (34.40%)   |
 
 Running IO benchmarks...
 
 | Task Name     | ops/sec    | Average Time (ns)  | Margin | Samples |
 |---------------|------------|--------------------|--------|---------|
-| multi3, no IO | 2,130,203  | 469.43882631866757 | ±0.12% | 1065102 |
-| multi3, IO    | 2,094,161  | 477.518153206768   | ±0.12% | 1047081 |
-| simd, no IO   | 12,338,511 | 81.04705249788411  | ±0.48% | 6169256 |
-| simd, IO      | 10,497,289 | 95.26268574792144  | ±0.14% | 5248645 |
+| multi3, no IO | 2,401,161  | 416.46509381486163 | ±0.10% | 1200581 |
+| multi3, IO    | 2,343,931  | 426.63369985367257 | ±0.10% | 1171966 |
+| simd, no IO   | 16,739,155 | 59.74017206886533  | ±0.29% | 8369578 |
+| simd, IO      | 3,220,807  | 310.4811361563343  | ±0.18% | 1610404 |
+| js            | 2,096,737  | 476.93137364532004 | ±1.82% | 1048370 |
 
 ### Interpretation
 
-SIMD seems about 4 times faster than the non-SIMD version.
+SIMD seems about 4 times faster than the non-SIMD version. Both WASM functions are faster than the JS version.
 
 The first set of benchmarks avoids IO overhead by settings up test cases within WASM. It resembles real-life usage
 because we are passing a bunch of data into WASM and doing some extensive computation there before returning.

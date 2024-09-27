@@ -5,6 +5,9 @@ async function benchmark() {
     console.log("\nRunning IO benchmarks...\n");
 
     const testInputs = [BigInt(1), BigInt(2), BigInt(3), BigInt(4)];
+    const largeNumber1 = BigInt("340282366920938463463374607431768211455"); // 2^128 - 1
+    const largeNumber2 = BigInt("340282366920938463463374607431768211455"); // 2^128 - 1
+
     const bench = new Bench();
     bench
         .add("multi3, no IO", () => {
@@ -18,6 +21,9 @@ async function benchmark() {
         })
         .add("simd, IO", () => {
             bench_tiny_simd(testInputs[0], testInputs[1], testInputs[2], testInputs[3]);
+        })
+        .add("js", () => {
+            const result = largeNumber1 * largeNumber2;
         });
 
     await bench.warmup();
