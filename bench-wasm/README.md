@@ -51,3 +51,28 @@ because we are passing a bunch of data into WASM and doing some extensive comput
 The second set of benchmarks uses [`tinybench`](https://github.com/tinylibs/tinybench) to measure the impact of IO on
 the performance. We expect some overhead there when passing test data between WASM and JS. This doesn't resemble
 real-life usage, but illustrates worst-case scenario for IO-bound applications.
+
+#### `multi3` mitigation
+
+Below are results from running an updated Arkworks version with a [
+`multi3` mitigation](https://github.com/arkworks-rs/algebra/blob/b33df5cce2d54cf4c9248e4b229c7d6708fa9375/ff/src/biginteger/arithmetic.rs#L92-L103).
+
+No IO benchmarks
+
+- Number of Cases: 1000000
+- Number of Trials: 100
+
+| Function     | Average Time (ms) | Median Time (ms) |
+|--------------|-------------------|------------------|
+| bench_multi3 | 85.38 (100.00%)   | 83.03 (100.00%)  |
+| bench_simd   | 90.08 (105.50%)   | 77.88 (93.80%)   |
+
+Running IO benchmarks...
+
+| Task Name     | ops/sec    | Average Time (ns)  | Margin | Samples |
+|---------------|------------|--------------------|--------|---------|
+| multi3, no IO | 1,921,950  | 520.3047256279402  | ±0.13% | 960976  |
+| multi3, IO    | 1,929,787  | 518.1917568711609  | ±0.57% | 964894  |
+| simd, no IO   | 15,610,361 | 64.06001410871346  | ±0.14% | 7805181 |
+| simd, IO      | 11,724,747 | 85.28968517187874  | ±0.23% | 5862374 |
+| js            | 8,434,616  | 118.55903729253586 | ±1.01% | 4217309 |
